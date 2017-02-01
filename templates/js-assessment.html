@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Skills JavaScript</title>
   <link rel="stylesheet" href="/static/styles.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 <body>
 
@@ -157,7 +158,10 @@
 
 <script>
   "use strict";
-  // put your code here
+
+  $("#kittenz-rule").on("dblclick", function(){
+    $("#kittenz-rule").attr("src", "http://cdn3-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-5.jpg");
+  });
 </script>
 
 <div class="hint">
@@ -179,16 +183,26 @@
 <fieldset>
   <input type="button" id="play-guessing-game" value="Play!">
   <form action="do-not-go-here" id="guessing-game-form">
-    <input id="number-guessed" name="number-guessed" type="number" placeholder="Guess" disabled>
+    <input id="number-guessed" name="number-guessed" type="number" placeholder="Guess" >
     <!-- hey! go read MDN about the "number" input type. Cool, huh? -->
-    <input type="submit" id="try-this-number" value="Guess" disabled>
-    <div id="number-guessing-msg"></div>
+    <input type="submit" id="try-this-number" value="Guess">
+    <div id="number-guessing-msg">Guess a number from 1 to 100.</div>
   </form>
 </fieldset>
 
 <script>
   "use strict";
-  // put your code here
+  $("#play-guessing-game").on("click", function(){
+        $(this).prop("disabled", true);
+        var randomNumber = Math.floor(Math.random() * 100) + 1;
+        $("#try-this-number").on("submit", function(){
+          if($("#guess") == randomNumber){
+
+          }
+        });
+        $("#number-guessing-msg").innerHTML("Guess a number from 1 to 100.");
+
+  });
 </script>
 
 
@@ -253,7 +267,13 @@
     $("#t-rex-img").append(tRexPhoto);
   }
 
-  // put your code here
+  var formValue = $("#victim name").serialize();
+
+  function attackExecute(){
+    $.post('/t-rex-attack.json', formValue, showTRexResults);
+  };
+
+  attackExecute();
 
 </script>
 
